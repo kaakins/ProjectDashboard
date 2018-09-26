@@ -1,4 +1,5 @@
 <?php
+require '../../app/common.php'';
 
 // Get the taskId from URL params
 $taskId = intval($_GET['taskId'] ?? 0);
@@ -7,4 +8,5 @@ $taskId = intval($_GET['taskId'] ?? 0);
 $work = Work::findByTaskId($taskId);
 
 // convert to json and print
+header('Content-type: application/json');
 echo json_encode($work);
