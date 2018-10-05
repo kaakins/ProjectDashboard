@@ -14,6 +14,7 @@ class Work
     $this->team_id = intval($row['team_id']);
     $this->start = $row['start_date'];
     $this->hours = floatval($row['hours']);
+
     // Calculate stop date
     $hours = floor($this->hours);
     $mins = intval(($this->hours - $hours) * 60); // Take advantage of one decimal place
