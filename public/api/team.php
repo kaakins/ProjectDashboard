@@ -1,9 +1,13 @@
 <?php
+
 require '../../app/common.php';
 
-$team = Team::findAll();
+// 1. Go to the database and get all teams
+$teams = Team::fetchAll();
 
+// 2. Convert to JSON
 $json = json_encode($teams, JSON_PRETTY_PRINT);
 
-header('Content-type: application/json');
-echo json_encode($json);
+// 3. Print
+header('Content-Type: application/json');
+echo $json;

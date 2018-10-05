@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS Work;
 
 CREATE TABLE Work (

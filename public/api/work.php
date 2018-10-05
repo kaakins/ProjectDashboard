@@ -1,19 +1,21 @@
 <?php
+
 require '../../app/common.php';
 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require 'workPost.php';
   exit;
 }
 
-// Get the taskId from URL params
+// If GET
 $taskId = intval($_GET['taskId'] ?? 0);
 
-if($taskId <1) {
+if ($taskId < 1) {
   throw new Exception('Invalid Task ID');
 }
 
-// go to DB & get all work associated with taskId
+
+// 1. Go to the database and get all work associated with the $taskId
 $workArr = Work::getWorkByTaskId($taskId);
 
 // 2. Convert to JSON
