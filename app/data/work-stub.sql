@@ -11,6 +11,24 @@ CREATE TABLE Work (
   completion_estimate int NOT NULL CHECK(0 <= completion_estimate <= 100)
 );
 
+CREATE TRIGGER sumWorkToTask
+AFTER INSERT ON Work
+FOR EACH ROW
+  UPDATE Tasks
+  SET
+    hours_worked = hours_worked + NEW.hours,
+    per_complete = IF(
+      NEW.start_date = (
+        SELECT MAX(start_date)
+        FROM Work
+        WHERE task_id = NEW.task_id
+      ),
+      NEW.completion_estimate,
+      per_complete
+    )
+  WHERE id = NEW.task_id
+;
+
 DROP TABLE IF EXISTS Teams;
 CREATE TABLE Teams (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
