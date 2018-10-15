@@ -158,6 +158,7 @@ var dashboardApp = new Vue({
       }]
     });
   },
+
   gotoTask(tid) {
     window.location = 'task.html?taskId=' + tid;
   }
