@@ -11,7 +11,7 @@ var tasksApp = new Vue({
       start_date: '',
       close_date: null,
       hours_worked: '',
-      perc_complete: '',
+      per_complete: '',
       current_sprint : ''
     },
     work: [ ],

@@ -42,7 +42,7 @@ CREATE TABLE Tasks (
   close_date DATE DEFAULT NULL,
   status ENUM('Open', 'Started', 'On Hold', 'Closed'),
   hours_worked DECIMAL(5,1) DEFAULT 0,
-  perc_complete int DEFAULT 0,
+  per_complete int DEFAULT 0,
   current_sprint BOOLEAN
 );
 
